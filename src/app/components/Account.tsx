@@ -1,7 +1,7 @@
 'use client'
 // import Image from "next/image";
 import {useState, ChangeEvent} from "react";
-import {Button} from '@heroui/react'
+import {Button, Input} from '@heroui/react'
 import {useAccount, useBalance, useReadContract, useWriteContract, useWalletClient} from 'wagmi'
 import {parseEther, formatEther} from "viem";
 import {PublicKey} from '@solana/web3.js'
@@ -17,6 +17,7 @@ interface TokenInfo {
 
 export default function Account() {
   const account = useAccount();
+  console.log(1212,account);
   const balance = useBalance({
     address: account.address,
     token: tokenAddress
@@ -175,9 +176,9 @@ export default function Account() {
         <Button className="px-2 bg-gray-500 text-white" onPress={addTokenHandle}>添加 QC 到钱包</Button>
       </section>
       <section>
-        <input className="border" type="text" value={toAddress} onChange={toAddressHandle}/>
+        <Input type="text" placeholder="address" value={toAddress} onChange={toAddressHandle}/>
         <br/>
-        <input className="border" type="text" value={amount} onChange={amountHandle}/>
+        <Input type="text" placeholder="amount" value={amount} onChange={amountHandle}/>
         <span>QC</span>
         <br/>
         <Button className="px-2 bg-gray-500 text-white" disabled={isPending} onPress={sendHandle}>{isPending?'pending...':'发送'}</Button>

@@ -1,7 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes descBorder {
+  from {
+    border-color: #22d3ee;
+  }
+  to {
+    border-color: transparent;
+  }
+}
+@keyframes descWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 16ch;
+  }
+}
+
+.words-desc {
+  letter-spacing: 4px;
+  animation: descBorder .9s infinite normal, descWidth 5s infinite steps(8);
 }
